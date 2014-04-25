@@ -1,0 +1,6 @@
+name = Search Apex Divert
+description = Divert site search box to 'search apex' aggregated search 
+dependencies[] = search
+core = 7.x
+package = tombola
+version = 7.x-1.0

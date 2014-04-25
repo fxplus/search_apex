@@ -1,0 +1,17 @@
+name = Search Apex - Feed
+description = Views and services to expose content from this site to the search aggregator (apex)
+core = 7.x
+package = tombola
+php = 5.2.4
+version = 7.x-1.0
+project = search_apex_feed
+dependencies[] = services
+dependencies[] = services_views
+dependencies[] = views
+features[ctools][] = services:services:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[services_endpoint][] = index_published
+features[views_view][] = search_index
+features[features_api][] = api:2
+

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the search_apex_feed feature.
+ */
+
+include_once 'search_apex_feed.features.inc';

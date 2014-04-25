@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function search_apex_divert_uninstall() {
+  // Remove variables
+  variable_del('search_apex_url');
+}
