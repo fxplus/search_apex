@@ -1,0 +1,7 @@
+name = Search Apex Search Block
+description = FX plus all services search block.
+package = FXplus Custom
+core = 7.x
+dependencies[] = views
+
+

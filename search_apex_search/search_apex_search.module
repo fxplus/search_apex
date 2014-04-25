@@ -1,0 +1,70 @@
+<?php
+/**
+ * @file
+ * Module file for search_apex_search.
+ */
+/*
+/**
+ * Implements hook_block_info().
+ */
+function search_apex_search_block_info() {
+  $blocks['form']['info'] = t('Search Apex Search Box');
+  // Not worth caching.
+  $blocks['form']['cache'] = DRUPAL_NO_CACHE;
+  $blocks['form']['properties']['administrative'] = TRUE;
+  return $blocks;
+}
+/**
+ * Implements hook_block_view().
+ */
+function search_apex_search_block_view($delta = '') {
+  if (user_access('search content')) {
+    $block['content'] = drupal_get_form('search_apex_search_block_form');
+    return $block;
+  }
+}
+/**
+ * Implements hook_forms().
+ */
+function search_apex_search_forms() {
+  $forms['search_apex_search_block_form']= array(
+    'callback' => 'search_apex_search_box',
+    'callback arguments' => array('search_apex_search_block_form'),
+  );
+  return $forms;
+}
+/**
+ * Form builder; Output a search form for the search block's search box.
+ */
+function search_apex_search_box($form, &$form_state, $form_id) {
+  // todo replace add_css with theme function?
+  // drupal_add_css(drupal_get_path('module', 'search_apex_search').'/search_apex_search.css');
+  $form['search_apex_search_form'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Search Falmouth Exeter Plus',
+    '#title_display' => 'invisible',
+    '#default_value' => '',
+    '#attributes' => array(
+      'title' => t('Search Falmouth Exeter Plus'), 
+      'placeholder' => t('search'),
+      'class' => array(
+         'search-query',
+      ),
+    ),
+  );
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Search'));
+  $form['#submit'] = array('search_apex_submit');
+  return $form;
+}
+
+function search_apex_submit($form, &$form_state) {
+  $searchterm = $form_state['values']['search_apex_search_form'];
+  _plus_search_query_search_apex($searchterm);
+}
+
+function _plus_search_query_search_apex($searchterm) {
+  //$apex_path = "http://search.localhost:8082/fx/academic/$searchterm";
+  $apex_path = "fx/academic/$searchterm";
+  drupal_goto($apex_path);
+}
