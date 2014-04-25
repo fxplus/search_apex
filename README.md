@@ -1,4 +1,6 @@
-##Simple multisite search via aggregation site
+##Search Apex
+
+###Simple multisite search via aggregation site
 
 The idea is to allow several drupal sites (and non drupal) to be consumed at regular intervals via services, so that all their content can be indexed, searched and filtered on one simnple site.
 
