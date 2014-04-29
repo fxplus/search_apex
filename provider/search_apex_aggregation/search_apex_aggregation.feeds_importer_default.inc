@@ -15,8 +15,8 @@ function search_apex_aggregation_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'library_import';
   $feeds_importer->config = array(
-    'name' => 'Resource site import',
-    'description' => 'import pages from library/ask/dyslexia',
+    'name' => 'Client site import',
+    'description' => 'import pages from client websites',
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
       'config' => array(
