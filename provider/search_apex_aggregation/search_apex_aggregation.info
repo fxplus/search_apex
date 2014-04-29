@@ -7,6 +7,7 @@ project = search_apex_aggregation
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = feeds
+dependencies[] = feeds_jsonpath_parser
 dependencies[] = feeds_tamper
 dependencies[] = link
 dependencies[] = number
