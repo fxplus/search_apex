@@ -15,7 +15,7 @@ This is mainly done to avoid anything complicated at the server side, such as Ap
 3. *Add New* **Client Site** nodes on the Search Apex, providing urls for the client websites (ie http://lolcats.com/rest/siteindex)
 4. Setup or run cron a couple of times on the Search Apex to import content from the client sites and index it
 5. Place the search_apex_search block where you would like it, and use that to search all of your sites
-6. On the client sites, set admin/config/search_apex_divert url to that of the search page on the search apex
+6. On the client sites, set admin/config/search_apex_divert url to that of the search page on the search apex, so that they use the aggregated search rather than their own.
 
 
 
