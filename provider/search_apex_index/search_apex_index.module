@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Search Apex Index feature.
+ */
+
+include_once 'search_apex_index.features.inc';

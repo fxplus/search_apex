@@ -1,0 +1,16 @@
+name = Search Apex Index
+description = Search API index and related views to return results for apex Searches
+core = 7.x
+package = Search
+version = 7.x-1.0
+project = search_apex_index
+dependencies[] = search_api
+dependencies[] = search_api_db
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[search_api_index][] = fx_site_pages
+features[search_api_server][] = database_server
+features[views_view][] = search_fx_academic
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][entity] = entity
