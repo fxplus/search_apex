@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * search_apex_feed.features.inc
+ */
 
 /**
  * Implements hook_ctools_plugin_api().
