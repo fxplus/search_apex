@@ -145,26 +145,10 @@ function search_apex_index_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['display_description'] = 'Search listings for cross site search';
-  $handler->display->display_options['path'] = 'fx/academic';
+  $handler->display->display_options['path'] = 'search';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Search Academic Services';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-
-  /* Display: Grid */
-  $handler = $view->new_display('page', 'Grid', 'page_1');
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_content_type' => 'field_content_type',
-    'feed_nid' => 'feed_nid',
-    'field_provider' => 'field_provider',
-  );
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['path'] = 'fx/academic/grid';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
@@ -238,18 +222,15 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['fields']['body_value']['id'] = 'body_value';
   $handler->display->display_options['fields']['body_value']['table'] = 'search_api_index_fx_site_pages';
   $handler->display->display_options['fields']['body_value']['field'] = 'body_value';
+  $handler->display->display_options['fields']['body_value']['label'] = '';
   $handler->display->display_options['fields']['body_value']['alter']['text'] = '100';
   $handler->display->display_options['fields']['body_value']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['body_value']['alter']['more_link'] = TRUE;
   $handler->display->display_options['fields']['body_value']['alter']['more_link_text'] = 'read more';
   $handler->display->display_options['fields']['body_value']['alter']['more_link_path'] = '[field_url]';
   $handler->display->display_options['fields']['body_value']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body_value']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body_value']['link_to_entity'] = 0;
-  /* Field: Indexed Node: The main body text » Summary */
-  $handler->display->display_options['fields']['body_summary']['id'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['table'] = 'search_api_index_fx_site_pages';
-  $handler->display->display_options['fields']['body_summary']['field'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['link_to_entity'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   $handler->display->display_options['displays'] = array(

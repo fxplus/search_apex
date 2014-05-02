@@ -65,6 +65,6 @@ function search_apex_submit($form, &$form_state) {
 
 function _plus_search_query_search_apex($searchterm) {
   //$apex_path = "http://search.localhost:8082/fx/academic/$searchterm";
-  $apex_path = "fx/academic/$searchterm";
+  $apex_path = "search/$searchterm";
   drupal_goto($apex_path);
 }
