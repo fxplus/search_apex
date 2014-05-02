@@ -1,7 +1,5 @@
 <?php
 /**
  * @file
- * Code for the search_apex_aggregation feature.
+ * Drupal needs this blank file.
  */
-
-include_once 'search_apex_aggregation.features.inc';
