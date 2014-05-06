@@ -1,11 +1,10 @@
 ##Search Apex
 
-###Simple multisite search via aggregation site
+###Simple multiple site search via aggregation
 
-The idea is to allow several drupal sites (and non drupal) to be consumed at regular intervals via services, so that all their content can be indexed, searched and filtered on one simple site.
+The idea is to allow several **drupal** sites (but would work with non drupal) to be consumed at regular intervals via services, so that all their content can be indexed, searched and filtered on one simple site. This is referred to as the **Search Apex**.
 
 This is mainly done to avoid anything complicated on the server side, such as Apache Solr, or anything messy like shared database tables. This is at the cost of some performance and scalability but allows, per site, admin configurable flexibility and weighting in the way the sites are collected and then results ordered and filtered. By default both indexing and results are configured using Views.
-
 
 
 ###Installation overview
@@ -20,7 +19,7 @@ This is mainly done to avoid anything complicated on the server side, such as Ap
 
 
 
-####Search Client
+####Installation for Search Client
 
 Enable *Search Apex Feed* to expose the published content on your site via services views. The data will be accessible (by default) at *yoursite/rest/searchindex*. This is the url you will use for this 'Client Site' when you are setting up the  provider.
 
@@ -28,7 +27,7 @@ If you would like to only expose one type of nodes use *yoursite/rest/searchinde
 
 Once you are happy that the index is being picked up at the apex site, you can enable the search_apex_redirect module, and set the url for the search apex at *admin/config/search/search-apex/divert*. This will redirect the standard drupal search box on this website so that it takes the user to the search apex to do their search.
 
-####Search Provider (the apex site)
+####Installation for Search Provider (the apex site)
 
 May require a couple of (unrelated) patches to contrib modules:
 
