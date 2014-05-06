@@ -4,13 +4,13 @@
 
 The idea is to allow several drupal sites (and non drupal) to be consumed at regular intervals via services, so that all their content can be indexed, searched and filtered on one simple site.
 
-This is mainly done to avoid anything complicated at the server side, such as Apache Solr. This is at the cost of some performance and scalability but allows, per site, admin configurable flexibility and weighting in the way the sites are collected and then results ordered and filtered.
+This is mainly done to avoid anything complicated on the server side, such as Apache Solr, or anything messy like shared database tables. This is at the cost of some performance and scalability but allows, per site, admin configurable flexibility and weighting in the way the sites are collected and then results ordered and filtered. By default both indexing and results are configured using Views.
 
 
 
 ###Installation
 
-1. Install modules from **client** folder on the websites you would like to index.
+1. Install modules from **client** folder on the websites you would like to index. (Ensure module dependencies are met)
 2. Install modules from **provider** folder on the site you would like to provide the search functionality for all the other sites (the **Search Apex**)
 3. *Add New* **Client Site** nodes on the Search Apex, providing urls for the client websites (ie http://lolcats.com/rest/siteindex)
 4. Setup or run cron a couple of times on the Search Apex to import content from the client sites and index it
