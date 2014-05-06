@@ -1,7 +1,7 @@
 name = search_apex_aggregation
 description = Content types and feed importer to collect pages exposed by client websites via searchindex service
 core = 7.x
-package = Search
+package = Search Apex - provider
 version = 7.x-1.0
 project = search_apex_aggregation
 ctools[] = feeds:feeds_importer_default:1

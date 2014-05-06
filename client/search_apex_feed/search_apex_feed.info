@@ -1,7 +1,7 @@
 name = Search Apex - Feed
 description = Views and services to expose content from this site to the search aggregator (apex)
 core = 7.x
-package = tombola
+package = Search Apex - client
 php = 5.2.4
 version = 7.x-1.0
 project = search_apex_feed
