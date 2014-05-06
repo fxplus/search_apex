@@ -1,5 +1,5 @@
 name = Search Apex Search Block
-description = FX plus all services search block.
+description = Multiple Site Search Block
 package = Search Apex - provider
 core = 7.x
 dependencies[] = views
