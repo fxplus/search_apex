@@ -39,7 +39,18 @@ function search_apex_search_forms() {
 function search_apex_search_box($form, &$form_state, $form_id) {
   // todo replace add_css with theme function?
   // drupal_add_css(drupal_get_path('module', 'search_apex_search').'/search_apex_search.css');
+  $form['#attributes'] = array(
+      'class' => array(
+         'form-search',
+      ),
+    );
+
+  
+
+  $form['#suffix'] = '</div>';
+
   $form['search_apex_search_form'] = array(
+    '#prefix' => '<div class="input-append">',
     '#type' => 'textfield',
     '#title' => 'Search Falmouth Exeter Plus',
     '#title_display' => 'invisible',
@@ -52,9 +63,20 @@ function search_apex_search_box($form, &$form_state, $form_id) {
       ),
     ),
   );
-  $form['actions'] = array('#type' => 'actions');
-  $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Search'));
+  // $form['actions'] = array('#type' => 'actions');
+  // $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Search'));
+  $form['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => t('Search'),
+    '#attributes' => array(
+      'class' => array(
+         'btn',
+      ),
+    ),
+    '#suffix' => '</div>',
+  );
   $form['#submit'] = array('search_apex_submit');
+  dpm($form);
   return $form;
 }
 
