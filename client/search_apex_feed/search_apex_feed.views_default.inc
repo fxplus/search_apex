@@ -28,8 +28,7 @@ function search_apex_feed_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
@@ -40,23 +39,24 @@ function search_apex_feed_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'alt_title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Title */
+  /* Field: Content: Full title */
   $handler->display->display_options['fields']['field_longtitle']['id'] = 'field_longtitle';
   $handler->display->display_options['fields']['field_longtitle']['table'] = 'field_data_field_longtitle';
   $handler->display->display_options['fields']['field_longtitle']['field'] = 'field_longtitle';
-  $handler->display->display_options['fields']['field_longtitle']['label'] = 'longtitle';
+  $handler->display->display_options['fields']['field_longtitle']['label'] = 'title';
+  $handler->display->display_options['fields']['field_longtitle']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_longtitle']['element_type'] = '0';
   $handler->display->display_options['fields']['field_longtitle']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_longtitle']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_longtitle']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_longtitle']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_longtitle']['settings'] = array(
-    'trim_length' => '600',
+    'skip_safe' => 0,
+    'skip_empty_values' => 0,
   );
   $handler->display->display_options['fields']['field_longtitle']['field_api_classes'] = TRUE;
   /* Field: Content: Nid */
@@ -143,7 +143,7 @@ function search_apex_feed_views_default_views() {
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
   $handler->display->display_options['filters']['nid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['nid']['expose']['operator_id'] = 'nid_op';
-  $handler->display->display_options['filters']['nid']['expose']['label'] = 'nid';
+  $handler->display->display_options['filters']['nid']['expose']['label'] = 'Nid';
   $handler->display->display_options['filters']['nid']['expose']['operator'] = 'nid_op';
   $handler->display->display_options['filters']['nid']['expose']['identifier'] = 'nid';
   $handler->display->display_options['filters']['nid']['expose']['remember_roles'] = array(
@@ -167,6 +167,14 @@ function search_apex_feed_views_default_views() {
   /* Display: Services */
   $handler = $view->new_display('services', 'Services', 'services_1');
   $handler->display->display_options['path'] = 'searchindex';
+
+  /* Display: Services 2 */
+  $handler = $view->new_display('services', 'Services 2', 'services_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['path'] = 'searchindex_preview';
   $export['search_index'] = $view;
 
   return $export;
