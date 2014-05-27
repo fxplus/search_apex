@@ -76,7 +76,6 @@ function search_apex_search_box($form, &$form_state, $form_id) {
     '#suffix' => '</div>',
   );
   $form['#submit'] = array('search_apex_submit');
-  dpm($form);
   return $form;
 }
 

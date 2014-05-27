@@ -126,7 +126,8 @@ function search_apex_index_default_search_api_server() {
           "title" : {
             "table" : "search_api_db_fx_site_pages_title",
             "type" : "text",
-            "boost" : "1.0"
+            "boost" : "21.0",
+            "column" : "title"
           },
           "search_api_language" : {
             "table" : "search_api_db_fx_site_pages",
@@ -174,6 +175,12 @@ function search_apex_index_default_search_api_server() {
             "column" : "field_provider",
             "type" : "integer",
             "boost" : "1.0"
+          },
+          "field_alt_title" : {
+            "table" : "search_api_db_fx_site_pages_field_alt_title",
+            "type" : "text",
+            "boost" : "8.0",
+            "column" : "field_alt_title"
           }
         }
       }

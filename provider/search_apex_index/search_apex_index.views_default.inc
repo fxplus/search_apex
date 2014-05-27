@@ -30,17 +30,14 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'mini';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['offset'] = '3';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ prev';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_content_type' => 'field_content_type',
-    'feed_nid' => 'feed_nid',
-    'field_provider' => 'field_provider',
-  );
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Indexed Node: Service Provider */
   $handler->display->display_options['relationships']['field_provider']['id'] = 'field_provider';
   $handler->display->display_options['relationships']['field_provider']['table'] = 'search_api_index_fx_site_pages';
@@ -83,31 +80,51 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['fields']['feed_nid']['label'] = '';
   $handler->display->display_options['fields']['feed_nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['feed_nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['feed_nid']['separator'] = '';
   $handler->display->display_options['fields']['feed_nid']['link_to_entity'] = 1;
   /* Field: Indexed Node: Service Provider */
   $handler->display->display_options['fields']['field_provider']['id'] = 'field_provider';
   $handler->display->display_options['fields']['field_provider']['table'] = 'search_api_index_fx_site_pages';
   $handler->display->display_options['fields']['field_provider']['field'] = 'field_provider';
   $handler->display->display_options['fields']['field_provider']['label'] = '';
+  $handler->display->display_options['fields']['field_provider']['element_type'] = 'em';
+  $handler->display->display_options['fields']['field_provider']['element_class'] = 'client-service-provider';
+  $handler->display->display_options['fields']['field_provider']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_provider']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_provider']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_provider']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_provider']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_provider']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_provider']['bypass_access'] = 0;
-  /* Field: Indexed Node: The main body text */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_fx_site_pages';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['max_length'] = '40';
-  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  /* Field: Indexed Node: The main body text » Summary */
-  $handler->display->display_options['fields']['body_summary']['id'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['table'] = 'search_api_index_fx_site_pages';
-  $handler->display->display_options['fields']['body_summary']['field'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['label'] = '';
-  $handler->display->display_options['fields']['body_summary']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body_summary']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Summary */
+  $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['table'] = 'search_api_index_fx_site_pages';
+  $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
+  $handler->display->display_options['fields']['field_summary']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_summary']['element_type'] = 'em';
+  $handler->display->display_options['fields']['field_summary']['element_class'] = 'client-site-provider';
+  $handler->display->display_options['fields']['field_summary']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_summary']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_summary']['element_default_classes'] = FALSE;
+  /* Field: The main body text: Text (indexed) */
+  $handler->display->display_options['fields']['body_value']['id'] = 'body_value';
+  $handler->display->display_options['fields']['body_value']['table'] = 'search_api_index_fx_site_pages';
+  $handler->display->display_options['fields']['body_value']['field'] = 'body_value';
+  $handler->display->display_options['fields']['body_value']['label'] = '';
+  $handler->display->display_options['fields']['body_value']['alter']['max_length'] = '600';
+  $handler->display->display_options['fields']['body_value']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body_value']['alter']['html'] = TRUE;
+  $handler->display->display_options['fields']['body_value']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body_value']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_fx_site_pages';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
   /* Sort criterion: Search: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_fx_site_pages';
@@ -124,6 +141,10 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['arguments']['search_api_views_fulltext']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['search_api_views_fulltext']['not'] = 0;
+  $handler->display->display_options['arguments']['search_api_views_fulltext']['fields'] = array(
+    'title' => 'title',
+    'body:value' => 'body:value',
+  );
   /* Filter criterion: Indexed Node: Service Provider */
   $handler->display->display_options['filters']['field_provider']['id'] = 'field_provider';
   $handler->display->display_options['filters']['field_provider']['table'] = 'search_api_index_fx_site_pages';
@@ -151,6 +172,7 @@ function search_apex_index_views_default_views() {
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -237,6 +259,19 @@ function search_apex_index_views_default_views() {
     'default' => 0,
     'page_1' => 0,
   );
+
+  /* Display: Nodes */
+  $handler = $view->new_display('page', 'Nodes', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'search/%/nodes';
   $export['search_fx_academic'] = $view;
 
   return $export;
