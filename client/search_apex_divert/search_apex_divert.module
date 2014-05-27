@@ -1,38 +1,48 @@
 <?php 
 /**
+ * @file
+ * Form alteration to divert search block
+ */
+
+/**
  * Implements hook_menu().
  */
 function search_apex_divert_menu() {
   $items['admin/config/search/search-apex/divert'] = array(
-      'title' => 'Search Apex Divert',
-      'description' => 'Divert standard site search to aggregated search.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('search_apex_admin_settings_form'),
-      'access arguments' => array('administer search apex feed'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'includes/admin.inc',
+    'title' => 'Search Apex Divert',
+    'description' => 'Divert standard site search to aggregated search.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('search_apex_admin_settings_form'),
+    'access arguments' => array('administer search apex feed'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/admin.inc',
   );
 
   return $items;
 }
 
-/* Implements hook_form_alter
+/**
+ * Implements hook_form_alter().
  *
- * modify the normal site search to use the search apex site instead 
+ * modify the normal site search to use the search apex site instead
  */
 function search_apex_divert_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "search_block_form" && variable_get('search_apex_redirect_enabled', TRUE)) {
     $form['#submit'] = array('plus_search_apex_submit');
   }
 }
-
+/**
+ * Callback function to submit search.
+ */
 function plus_search_apex_submit($form, &$form_state) {
   $searchterm = $form_state['values']['search_block_form'];
   _plus_search_query_search_apex($searchterm);
 }
-
+/**
+ * Callback function to execute configured redirect.
+ */
 function _plus_search_query_search_apex($searchterm) {
-  $apex_path = variable_get('search_apex_url', '').'/';
-  //$libraryfilter ='?field_provider_op=%3D&field_provider=8';  
-  drupal_goto($apex_path.$searchterm);
+  $apex_path = variable_get('search_apex_url', '') . '/';
+  // $filter ='?field_provider_op=%3D&field_provider=8';
+  drupal_goto($apex_path . $searchterm);
 }
