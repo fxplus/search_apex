@@ -18,7 +18,8 @@ function search_apex_search_block_info() {
  * Implements hook_block_view().
  */
 function search_apex_search_block_view($delta = '') {
-  if (user_access('search content')) {
+  // if (user_access('search content')) {
+  if (user_access('View published content')) {
     $block['content'] = drupal_get_form('search_apex_search_block_form');
     return $block;
   }
@@ -29,7 +30,7 @@ function search_apex_search_block_view($delta = '') {
 function search_apex_search_forms() {
   $forms['search_apex_search_block_form']= array(
     'callback' => 'search_apex_search_box',
-    'callback arguments' => array('search_apex_search_block_form'),
+    'callback arguments' => array('search_apex_search_box'),
   );
   return $forms;
 }
