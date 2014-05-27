@@ -19,10 +19,10 @@ function search_apex_search_block_info() {
  */
 function search_apex_search_block_view($delta = '') {
   // if (user_access('search content')) {
-  if (user_access('View published content')) {
+  //if (user_access('view published content')) {
     $block['content'] = drupal_get_form('search_apex_search_block_form');
     return $block;
-  }
+  //}
 }
 /**
  * Implements hook_forms().
