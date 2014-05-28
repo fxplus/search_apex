@@ -44,12 +44,23 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['empty']['area_text_custom']['content'] = '<div class="alert alert-block alert-info">
 <p>Sorry, there were no results for that search.</p>
 </div>';
+  /* Field: Indexed Node: URL of indexed content */
+  $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['table'] = 'search_api_index_search_apex_index';
+  $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['label'] = '';
+  $handler->display->display_options['fields']['field_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_url']['type'] = 'link_plain';
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_search_apex_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_url]';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_label_type'] = '0';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
@@ -114,6 +125,19 @@ function search_apex_index_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid_1']['link_to_entity'] = 0;
+  /* Field: Provider id */
+  $handler->display->display_options['fields']['field_provider_1']['id'] = 'field_provider_1';
+  $handler->display->display_options['fields']['field_provider_1']['table'] = 'search_api_index_search_apex_index';
+  $handler->display->display_options['fields']['field_provider_1']['field'] = 'field_provider';
+  $handler->display->display_options['fields']['field_provider_1']['ui_name'] = 'Provider id';
+  $handler->display->display_options['fields']['field_provider_1']['label'] = '';
+  $handler->display->display_options['fields']['field_provider_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_provider_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_provider_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_provider_1']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_provider_1']['display'] = 'id';
+  $handler->display->display_options['fields']['field_provider_1']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_provider_1']['bypass_access'] = 0;
   /* Contextual filter: Search: Fulltext search */
   $handler->display->display_options['arguments']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['arguments']['search_api_views_fulltext']['table'] = 'search_api_index_search_apex_index';
