@@ -24,7 +24,7 @@ function search_apex_index_default_search_api_index() {
     "item_type" : "node",
     "options" : {
       "index_directly" : 0,
-      "cron_limit" : "50",
+      "cron_limit" : "10",
       "fields" : {
         "body:value" : { "type" : "text", "boost" : "0.8" },
         "search_api_language" : { "type" : "string" },
