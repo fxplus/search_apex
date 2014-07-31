@@ -7,11 +7,11 @@
 /**
  * Implements hook_permission().
  */
-function search_apex_permission() {
+function search_apex_divert_permission() {
   return array(
-      'use search apex' => array(
-          'title' => t('Use the multisite search'),
-      ),
+    'use search apex' => array(
+        'title' => t('Use the search apex'),
+    ),
   );
 }
 
