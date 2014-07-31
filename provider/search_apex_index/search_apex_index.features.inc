@@ -16,26 +16,19 @@ function search_apex_index_views_api($module = NULL, $api = NULL) {
  */
 function search_apex_index_default_search_api_index() {
   $items = array();
-  $items['fx_site_pages'] = entity_import('search_api_index', '{
-    "name" : "Search Apex client pages index",
-    "machine_name" : "fx_site_pages",
+  $items['search_apex_index'] = entity_import('search_api_index', '{
+    "name" : "Search Apex Index",
+    "machine_name" : "search_apex_index",
     "description" : null,
-    "server" : "database_server",
+    "server" : "database",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 1,
-      "cron_limit" : "50",
+      "index_directly" : 0,
+      "cron_limit" : "10",
       "fields" : {
-        "nid" : { "type" : "integer" },
-        "title" : { "type" : "text" },
-        "created" : { "type" : "date" },
-        "changed" : { "type" : "date" },
-        "feed_nid" : { "type" : "integer" },
-        "field_radioactivity" : { "type" : "integer" },
-        "field_provider" : { "type" : "integer", "entity_type" : "taxonomy_term" },
-        "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text", "boost" : "0.8" },
-        "field_url:url" : { "type" : "uri" }
+        "search_api_language" : { "type" : "string" },
+        "title" : { "type" : "text", "boost" : "0.8" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -51,14 +44,9 @@ function search_apex_index_default_search_api_index() {
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
-        "search_api_case_ignore" : {
-          "status" : 1,
-          "weight" : "0",
-          "settings" : { "fields" : { "title" : true, "body:value" : true } }
-        },
         "search_api_html_filter" : {
           "status" : 1,
-          "weight" : "10",
+          "weight" : "-50",
           "settings" : {
             "fields" : { "title" : true, "body:value" : true },
             "title" : 0,
@@ -66,9 +54,14 @@ function search_apex_index_default_search_api_index() {
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
           }
         },
+        "search_api_case_ignore" : {
+          "status" : 1,
+          "weight" : "-49",
+          "settings" : { "fields" : { "title" : true, "body:value" : true } }
+        },
         "search_api_tokenizer" : {
           "status" : 0,
-          "weight" : "20",
+          "weight" : "-48",
           "settings" : {
             "fields" : { "title" : true, "body:value" : true },
             "spaces" : "[^[:alnum:]]",
@@ -76,8 +69,8 @@ function search_apex_index_default_search_api_index() {
           }
         },
         "search_api_stopwords" : {
-          "status" : 1,
-          "weight" : "30",
+          "status" : 0,
+          "weight" : "-47",
           "settings" : {
             "fields" : { "title" : true, "body:value" : true },
             "file" : "",
@@ -85,13 +78,14 @@ function search_apex_index_default_search_api_index() {
           }
         },
         "search_api_highlighting" : {
-          "status" : 1,
-          "weight" : "35",
+          "status" : 0,
+          "weight" : "-46",
           "settings" : {
             "prefix" : "\\u003Cstrong\\u003E",
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
             "excerpt_length" : "256",
+            "exclude_fields" : [],
             "highlight" : "always"
           }
         }
@@ -108,79 +102,30 @@ function search_apex_index_default_search_api_index() {
  */
 function search_apex_index_default_search_api_server() {
   $items = array();
-  $items['database_server'] = entity_import('search_api_server', '{
-    "name" : "Database Server",
-    "machine_name" : "database_server",
-    "description" : "Store search index in the normal drupal (My)SQL database",
+  $items['database'] = entity_import('search_api_server', '{
+    "name" : "database",
+    "machine_name" : "database",
+    "description" : "Search Apex database",
     "class" : "search_api_db_service",
     "options" : {
       "database" : "default:default",
       "min_chars" : "3",
-      "indexes" : { "fx_site_pages" : {
-          "nid" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "nid",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
+      "indexes" : { "search_apex_index" : {
           "title" : {
-            "table" : "search_api_db_fx_site_pages_title",
+            "table" : "search_api_db_search_apex_index_text",
             "type" : "text",
-            "boost" : "21.0",
-            "column" : "title"
+            "boost" : "0.8"
           },
           "search_api_language" : {
-            "table" : "search_api_db_fx_site_pages",
+            "table" : "search_api_db_search_apex_index",
             "column" : "search_api_language",
             "type" : "string",
             "boost" : "1.0"
           },
           "body:value" : {
-            "table" : "search_api_db_fx_site_pages_body_value",
+            "table" : "search_api_db_search_apex_index_text",
             "type" : "text",
             "boost" : "0.8"
-          },
-          "created" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "created",
-            "type" : "date",
-            "boost" : "1.0"
-          },
-          "changed" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "changed",
-            "type" : "date",
-            "boost" : "1.0"
-          },
-          "field_radioactivity" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "field_radioactivity",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "feed_nid" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "feed_nid",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_url:url" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "field_url_url",
-            "type" : "uri",
-            "boost" : "1.0"
-          },
-          "field_provider" : {
-            "table" : "search_api_db_fx_site_pages",
-            "column" : "field_provider",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_alt_title" : {
-            "table" : "search_api_db_fx_site_pages_field_alt_title",
-            "type" : "text",
-            "boost" : "8.0",
-            "column" : "field_alt_title"
           }
         }
       }
