@@ -44,7 +44,7 @@ function search_apex_feed_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Full title */
+  /* Field: Content: Title */
   $handler->display->display_options['fields']['field_longtitle']['id'] = 'field_longtitle';
   $handler->display->display_options['fields']['field_longtitle']['table'] = 'field_data_field_longtitle';
   $handler->display->display_options['fields']['field_longtitle']['field'] = 'field_longtitle';
@@ -143,7 +143,7 @@ function search_apex_feed_views_default_views() {
   $handler->display->display_options['filters']['nid']['field'] = 'nid';
   $handler->display->display_options['filters']['nid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['nid']['expose']['operator_id'] = 'nid_op';
-  $handler->display->display_options['filters']['nid']['expose']['label'] = 'Nid';
+  $handler->display->display_options['filters']['nid']['expose']['label'] = 'nid';
   $handler->display->display_options['filters']['nid']['expose']['operator'] = 'nid_op';
   $handler->display->display_options['filters']['nid']['expose']['identifier'] = 'nid';
   $handler->display->display_options['filters']['nid']['expose']['remember_roles'] = array(

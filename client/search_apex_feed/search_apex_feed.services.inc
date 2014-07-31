@@ -16,7 +16,16 @@ function search_apex_feed_default_services_endpoint() {
   $endpoint->name = 'index_published';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'rest';
-  $endpoint->authentication = array();
+  $endpoint->authentication = array(
+    'services_ipauth' => array(
+      'services_ipauth_type' => '1',
+      'services_ipauth_addresses' => array(
+        0 => '127.0.0.1',
+        1 => '95.154.220.8',
+        2 => '194.82.214.1',
+      ),
+    ),
+  );
   $endpoint->server_settings = array(
     'formatters' => array(
       'json' => TRUE,
@@ -35,20 +44,6 @@ function search_apex_feed_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
-    'entity_node' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
-    'searchindex' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
     'views' => array(
       'operations' => array(
         'retrieve' => array(
@@ -57,7 +52,7 @@ function search_apex_feed_default_services_endpoint() {
       ),
     ),
   );
-  $endpoint->debug = 1;
+  $endpoint->debug = 0;
   $export['index_published'] = $endpoint;
 
   return $export;
