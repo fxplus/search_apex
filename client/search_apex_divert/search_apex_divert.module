@@ -5,6 +5,17 @@
  */
 
 /**
+ * Implements hook_permission().
+ */
+function search_apex_permission() {
+  return array(
+      'use search apex' => array(
+          'title' => t('Use the multisite search'),
+      ),
+  );
+}
+
+/**
  * Implements hook_menu().
  */
 function search_apex_divert_menu() {
@@ -27,7 +38,7 @@ function search_apex_divert_menu() {
  * modify the normal site search to use the search apex site instead
  */
 function search_apex_divert_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "search_block_form" && variable_get('search_apex_redirect_enabled', TRUE)) {
+  if ($form_id == "search_block_form" && variable_get('search_apex_redirect_enabled', TRUE) && user_access('use search apex')) {
     $form['#submit'] = array('plus_search_apex_submit');
   }
 }

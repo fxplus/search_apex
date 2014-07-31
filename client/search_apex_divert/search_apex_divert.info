@@ -4,3 +4,4 @@ dependencies[] = search
 core = 7.x
 package = Search Apex - client
 version = 7.x-1.0
+configure = admin/config/search/search-apex/divert
